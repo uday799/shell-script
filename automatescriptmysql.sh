@@ -1,35 +1,57 @@
 #!/bin/bash
 USERID=$(id -u)
-if [$USERID -ne 0]
+
+if [ $USERID -ne 0 ]
 then
-echo "ERROR:PLs check the root access to execute this script
-exit 1
+    echo "ERROR:: You must have sudo access to execute this script"
+    exit 1 #other than 0
 fi
+
 dnf list installed mysql
-if [$? -ne 0]
-then
-dnf install mysql -y
-if [$? -ne 0]
-then
-echo "installing MYSQL FAILURE"
-exit 1
+
+if [ $? -ne 0 ]
+then # not installed
+    dnf install mysql -y
+    if [ $? -ne 0 ]
+    then
+        echo "Installing MySQL ... FAILURE"
+        exit 1
+    else
+        echo "Installing MySQL ... SUCCESS"
+    fi
 else
-echo "installing MYSQL SUCCESS"
+    echo "MySQL is already ... INSTALLED"
 fi
-else 
-echo "MYSQL is already installed"
-fi
+
+# if [ $? -ne 0 ]
+# then
+#     echo "Installing MySQL ... FAILURE"
+#     exit 1
+# else
+#     echo "Installing MySQL ... SUCCESS"
+# fi
+
 dnf list installed git
-if [$? -ne 0]
-then 
-dnf install git -y
-if [$? -ne 0]
+
+if [ $? -ne 0 ]
 then
-echo "installing git is failure"
-exit 1
+    dnf install git -y
+    if [ $? -ne 0 ]
+    then
+        echo "Installing Git ... FAILURE"
+        exit 1
+    else
+        echo "Installing Git ... SUCCESS"
+    fi
 else
-echo "installing git is success"
+    echo "Git is already ... INSTALLED"
 fi
-else
-echo "git is alraedy installed"
-fi
+
+
+# if [ $? -ne 0 ]
+# then
+#     echo "Installing Git ... FAILURE"
+#     exit 1
+# else
+#     echo "Installing Git ... SUCCESS"
+# fi
