@@ -1,4 +1,4 @@
 #!/bin/bash
-PERSON=$1
-PERSON=$2
-echo "$PERSON:HI $PERSON"
+PERSON1=$1
+PERSON2=$2
+echo "$PERSON1:HI $PERSON2"
