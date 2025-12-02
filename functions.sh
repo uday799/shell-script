@@ -5,7 +5,7 @@ Y="\e[33m"
 LOG_FOLDER="/var/log/shellscript-logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log
+LOG_FILE_NAME="$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 echo "script started executed at $TIMESTAMP" &>>$LOG_FILE_NAME
 
@@ -32,7 +32,7 @@ then
 dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "installing mysql"
 else
-echo -e " $Y mysql already installed"
+echo -e "$Y mysql already installed"
 fi
 
 dnf list installed git &>>$LOG_FILE_NAME
@@ -41,5 +41,5 @@ then
 dnf install git -y &>>$LOG_FILE_NAME
 VALIDATE $? "installing git"
 else
-echo -e " $Y git already installed"
+echo -e "$Y git already installed"
 fi
