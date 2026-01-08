@@ -31,7 +31,7 @@ fi
 
 echo "script started executing at : $TIMESTAMP"
 
-dnf installed mysql  &>>LOG_FILE_NAME
+dnf list installed mysql  &>>LOG_FILE_NAME
 if [ $? -ne 0 ]
 then
 dnf install mysql -y &>>LOG_FILE_NAME
@@ -40,7 +40,7 @@ else
 echo -e  "mysql already $Y installed"
 fi
 
-dnf installed git &>>LOG_FILE_NAME
+dnf list installed git &>>LOG_FILE_NAME
 if [ $? -ne 0 ]
 then
 dnf install git -y &>>LOG_FILE_NAME
