@@ -23,7 +23,7 @@ fi
 
 }
 
-if [ $?-ne 0 ]
+if [ $? -ne 0 ]
 then
 echo "you must have sudo access to execute this script pls try with sudo access"
 exit 1
