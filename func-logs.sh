@@ -10,14 +10,15 @@ LOG_FOLDER=/var/log/shell-script-log
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME=$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log
+
 VALIDATE() {
 
-if [$1 -ne 0 ]
+if [ $1 -ne 0 ]
 then
-echo "$2... failure"
+echo -e  "$2... $R failure"
 exit 1
 else
-echo "$2.. success"
+echo -e "$2.. $G success"
 fi
 
 }
@@ -28,20 +29,22 @@ echo "you must have sudo access to execute this script pls try with sudo access"
 exit 1
 fi
 
-dnf installed mysql
+echo "script started executing at : $TIMESTAMP"
+
+dnf installed mysql  &>>LOG_FILE_NAME
 if [ $? -ne 0 ]
 then
-dnf install mysq1
+dnf install mysql -y &>>LOG_FILE_NAME
 VALIDATE $? "INSTALLING MYSQL"
 else
-echo "mysql already installed"
+echo -e  "mysql already $Y installed"
 fi
 
-dnf installed git
+dnf installed git &>>LOG_FILE_NAME
 if [ $? -ne 0 ]
 then
-dnf install git
+dnf install git -y &>>LOG_FILE_NAME
 VALIDATE $? "INSTALLING GIT"
 else
-echo "git already installed"
+echo -e "git already $Y installed"
 fi
