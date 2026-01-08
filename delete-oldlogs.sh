@@ -12,12 +12,12 @@ TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME=$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log
 
 FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +14)
-echo "files to delete is :$FILES_TO_DELETE
+echo "files to delete is :$FILES_TO_DELETE"
 
 while read -r files
 do
 
-echo "files deleting are: $FILES_TO_DELETE
+echo "files deleting are: $FILES_TO_DELETE"
 
 rm -rf $files
 
