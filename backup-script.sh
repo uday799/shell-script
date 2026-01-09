@@ -12,7 +12,6 @@ TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME=$LOG_FOLDER/$LOG_FILE-$TIMESTAMP.log
 
 echo "script started executing at : $TIMESTAMP"
-mkdir -p $LOGS_FOLDER
 
 USAGE() {
 
