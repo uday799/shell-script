@@ -1,5 +1,5 @@
 #!/bin/bash
-DISK_USAGE=$(df -hT | grep xfs )
+DISK_USAGE=$(df -hT | grep xfs)
 DISK_THRESHOLD=5
 MSG=""
 
@@ -13,6 +13,6 @@ if [ $USAGE -ge $DISK_THRESHOLD ]
 then
 MSG+="High Disk usage on partition: $PARTITION Usage is: $USAGE \n "
 fi
-done <<< DISK_USAGE
+done <<< $DISK_USAGE
 echo -e "MSG is:$MSG"
 echo "$MSG" | mutt -s "High Disk Usage" udaysai299@gmail.com
