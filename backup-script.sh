@@ -3,7 +3,6 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-USERID=$(id -u)
 SOURCE_DIR=$1
 DES_DIR=$2
 DAYS=${3:-14}
@@ -34,7 +33,7 @@ echo "pls check ur souce directory"
 exit 1
 fi 
 
-if [ ! -d "$DEST_DIR" ]
+if [ ! -d "$DES_DIR" ]
 then
 echo "pls check ur dest directory"
 exit 1
@@ -45,7 +44,7 @@ FILES=$(find $SOURCE_DIR -name ".log" -mtime +$DAYS)
 if [ -n "$FILES"]
 then
 echo files to be zip is :$FILES
-ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.log"
+ZIP_FILE="$DES_DIR/app-logs-$TIMESTAMP.log"
 find $SOURCE_DIR -name ".log" -mtime +$DAYS | zip -@ "$ZIP_FILE"
 if [ -f "$ZIP_FILE"]
 then
@@ -62,4 +61,4 @@ fi
 else
  echo"no files found older than $DAYS to zip"
  fi
- 
+
