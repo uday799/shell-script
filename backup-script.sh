@@ -52,6 +52,7 @@ while read -r filepath
 do
 echo "files to be deleting are :$filepath"
 rm -rf $filepath
+echo "deleted file is :$filepath"
 done <<< $FILES
 else
 echo "zip file is not created"
