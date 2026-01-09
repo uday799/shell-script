@@ -43,7 +43,7 @@ FILES=$(find $SOURCE_DIR -name ".log" -mtime +$DAYS)
 
 if [ -n "$FILES"]
 then
-echo files to be zip is :$FILES
+echo "files to be zip is :$FILES"
 ZIP_FILE="$DES_DIR/app-logs-$TIMESTAMP.log"
 find $SOURCE_DIR -name ".log" -mtime +$DAYS | zip -@ "$ZIP_FILE"
 if [ -f "$ZIP_FILE"]
@@ -51,14 +51,15 @@ then
 echo "successfully created zip file for older than $DAYS"
 while read -r filepath
 do
-echo "files to be deleting are: $filepath
+echo "files to be deleting are: $filepath"
 rm -rf $filepath
 done <<< $FILES
 else
 echo "zip file is not created"
 exit 1
 fi
+
 else
- echo"no files found older than $DAYS to zip"
+ echo "no files found older than $DAYS to zip"
  fi
 
