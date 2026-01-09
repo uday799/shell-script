@@ -51,7 +51,7 @@ echo "successfully created zip file for older than $DAYS"
 while read -r filepath
 do
 echo "files to be deleting are :$filepath"
-rm -rf $filepath
+rm -f $filepath
 echo "deleted file is :$filepath"
 done <<< $FILES
 else
