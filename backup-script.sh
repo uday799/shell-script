@@ -45,7 +45,7 @@ then
 echo "files to be zip is :$FILES"
 ZIP_FILE="$DES_DIR/app-logs-$TIMESTAMP.log"
 find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_FILE"
-if [ -f "$ZIP_FILE"]
+if [ -f "$ZIP_FILE" ]
 then
 echo "successfully created zip file for older than $DAYS"
 while read -r filepath
